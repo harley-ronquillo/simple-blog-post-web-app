@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Blog Post App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">BlogPost</h1>
+            </div>
+            
+            <div class="user-profile">
+                <img src="images/default-profile.png" alt="Profile" class="profile-pic">
+                <span id="username">Username</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="genre-header">
+                    <h3>Your Genres</h3>
+                    <button id="addGenreBtn" class="add-genre-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div id="userGenres" class="genre-list">
+                    <!-- User's genres will be populated dynamically -->
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="posts" class="posts-container">
+                <!-- Posts will be populated dynamically -->
+            </div>
+
+            <!-- Floating Post Button -->
+            <button id="newPostBtn" class="floating-btn">
+                <i class="fas fa-plus"></i>
+            </button>
+        </main>
+
+        <!-- Post Creation Modal -->
+        <div id="postModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Create New Post</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="newPost" placeholder="What's on your mind?"></textarea>
+                    <select id="postGenre">
+                        <!-- User's genres will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitPost" class="submit-btn">Post</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Genre Modal -->
+        <div id="addGenreModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Genre</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="newGenreName">Genre Name</label>
+                        <input type="text" id="newGenreName" placeholder="Enter genre name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitGenre" class="submit-btn">Add Genre</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/posts.js"></script>
+</body>
+</html> 

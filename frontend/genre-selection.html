@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Genres - Blog Post App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <style>
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .genre-item {
+            padding: 1rem;
+            border: 1px solid #000;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .genre-item.selected {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .genre-selection-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .selection-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .selection-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .min-genres-message {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="genre-selection-container">
+        <div class="selection-header">
+            <h1>Welcome to BlogPost!</h1>
+            <p>Please select at least 3 genres that interest you</p>
+        </div>
+
+        <div id="genreGrid" class="genre-grid">
+            <!-- Genres will be populated dynamically -->
+        </div>
+
+        <div class="selection-footer">
+            <p class="min-genres-message">Selected: <span id="selectedCount">0</span> (minimum 3 required)</p>
+            <button id="continueBtn" disabled>Continue to Blog</button>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/genre-selection.js"></script>
+</body>
+</html> 
