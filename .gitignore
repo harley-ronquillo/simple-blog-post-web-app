@@ -1,2 +1,4 @@
 /backend/.env
 data/
+/backend/__pycache__/
+/backend/routes
