@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 // DOM Elements
 const postsContainer = document.getElementById('posts');
 const newPostTextarea = document.getElementById('newPost');

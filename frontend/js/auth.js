@@ -1,11 +1,9 @@
-// DOM Elements
+import {API_URL} from './config.js';
 const loginBtn = document.getElementById('loginBtn');
 const signupBtn = document.getElementById('signupBtn');
 const genreSelection = document.getElementById('genreSelection');
 const blogFeed = document.getElementById('blogFeed');
 
-// API URL
-const API_URL = 'http://localhost:5000';
 
 // Get current page
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -25,8 +23,43 @@ signupBtn.addEventListener('click', () => {
     blogFeed.classList.add('hidden');
 });
 
-// Handle Login Page
-if (currentPage === 'index.html') {
+function showSignupForm() {
+    const signupForm = document.getElementById('signupForm');
+        if (signupForm) {
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = document.getElementById('signupUsername').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+
+                try {
+                    const response = await fetch(`${API_URL}/auth/signup`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, email, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('userId', data.user_id);
+                        localStorage.setItem('username', username);
+                        window.location.href = 'home.html';
+                    } else {
+                        alert(data.message || 'Signup failed');
+                    }
+                } catch (error) {
+                    console.error('Signup error:', error);
+                    alert('Signup failed. Please try again.');
+                }
+            });
+        }
+}
+
+function showLoginForm() {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -61,56 +94,14 @@ if (currentPage === 'index.html') {
     }
 }
 
+// Handle Login Page
+if (currentPage === 'index.html') {
+    showLoginForm();
+}
+
 // Handle Signup Page
 if (currentPage === 'signup.html') {
-    const signupForm = document.getElementById('signupForm');
-    if (signupForm) {
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('signupUsername').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-
-            try {
-                const response = await fetch(`${API_URL}/auth/signup`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, email, password })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('userId', data.user_id);
-                    localStorage.setItem('username', username);
-                    window.location.href = 'home.html';
-                } else {
-                    alert(data.message || 'Signup failed');
-                }
-            } catch (error) {
-                console.error('Signup error:', error);
-                alert('Signup failed. Please try again.');
-            }
-        });
-    }
-}
-
-// Helper Functions
-function showGenreSelection() {
-    loginForm.classList.add('hidden');
-    signupForm.classList.add('hidden');
-    genreSelection.classList.remove('hidden');
-    blogFeed.classList.add('hidden');
-}
-
-function showBlogFeed() {
-    loginForm.classList.add('hidden');
-    signupForm.classList.add('hidden');
-    genreSelection.classList.add('hidden');
-    blogFeed.classList.remove('hidden');
+    showSignupForm();
 }
 
 // Check authentication status

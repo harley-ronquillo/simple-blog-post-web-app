@@ -1,5 +1,4 @@
-// API URL
-const API_URL = 'http://localhost:5000';
+import {API_URL}  from './config.js';
 
 // Handle Signup Form
 const signupForm = document.getElementById('signupForm');

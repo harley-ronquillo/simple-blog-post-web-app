@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 // Check authentication
 const token = localStorage.getItem('token');
 if (!token) {

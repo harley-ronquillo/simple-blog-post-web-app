@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 // DOM Elements
 const username = document.getElementById('username');
 const userGenres = document.getElementById('userGenres');

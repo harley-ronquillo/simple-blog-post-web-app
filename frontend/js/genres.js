@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 // DOM Elements
 const genreGrid = document.querySelector('.genre-grid');
 const submitGenresBtn = document.getElementById('submitGenres');

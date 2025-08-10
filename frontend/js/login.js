@@ -1,5 +1,4 @@
-// API URL
-const API_URL = 'http://localhost:5000';
+import {API_URL} from './config.js';
 
 // Handle Login Form
 const loginForm = document.getElementById('loginForm');
